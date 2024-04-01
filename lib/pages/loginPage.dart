@@ -160,6 +160,10 @@ class _LoginPageState extends State<LoginPage> {
                               fontSize: 30),
                         )),
                       ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text('Privacy Policy',style: TextStyle(color: Colors.white),),
                     )
                   ],
                 ),

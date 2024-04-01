@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:swift_cafe_hp/database.dart';
+import 'package:swift_cafe_hp/pages/searchPage.dart';
 import 'package:swift_cafe_hp/styles.dart';
 
+// HomePage widget
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -11,6 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+// State class for HomePage widget
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
@@ -38,13 +41,10 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
-                SizedBox(
-                  height: 30,
-                ),
+                SizedBox(height: 30),
                 Row(
                   children: [
-                    //Hi emoji
+                    // Hi emoji
                     Padding(
                       padding: const EdgeInsets.only(left: 20),
                       child: Text(
@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
                         style: TextStyle(fontSize: 30),
                       ),
                     ),
-                    //date and name
+                    // Date and name
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
@@ -79,10 +79,8 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                     ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    //Nav to Cart page -> container with icon
+                    SizedBox(width: 40),
+                    // Nav to Cart page -> container with icon
                     Container(
                       width: 40,
                       height: 40,
@@ -99,7 +97,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Icon(Icons.shopping_basket_rounded),
                     ),
-                    // nav to user profile page -> container with circle Circle avatar
+                    // Nav to user profile page -> container with circle Circle avatar
                     Padding(
                       padding: const EdgeInsets.only(left: 15),
                       child: Container(
@@ -121,48 +119,49 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Center(
-                  child: Container(
-                    width: 320,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(7),
-                    ),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 20),
-                          child: Icon(
-                            Icons.search,
-                            color: Colors.grey,
-                            size: 25,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            'Search favorite Beverages',
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 12,
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context)=>SearchPage()));
+                    },
+                    child: Container(
+                      width: 320,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(7),
+                      ),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Icon(
+                              Icons.search,
                               color: Colors.grey,
+                              size: 25,
                             ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 60,
-                        ),
-                        Icon(
-                          Icons.tune_rounded,
-                          color: Colors.grey,
-                        )
-                      ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              'Search favorite Beverages',
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 12,
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 60),
+                          Icon(
+                            Icons.tune_rounded,
+                            color: Colors.grey,
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Container(
                   width: double.infinity,
                   height: 370,
@@ -226,15 +225,16 @@ class _HomePageState extends State<HomePage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              'Get it instantly',
-                              style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 18,
-                                  color: Color(0xffB6B6B6),
-                                  fontWeight: FontWeight.w200),
-                            )),
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'Get it instantly',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 18,
+                                color: Color(0xffB6B6B6),
+                                fontWeight: FontWeight.w200),
+                          ),
+                        ),
                       ),
                       GetItInstantlyContainer(
                         image: Database.CoffeeItems.values.elementAt(3).image,
@@ -248,8 +248,7 @@ class _HomePageState extends State<HomePage> {
                             .elementAt(3)
                             .description,
                       ),
-
-                      SizedBox(height: 10,),
+                      SizedBox(height: 10),
                       GetItInstantlyContainer(
                         image: Database.CoffeeItems.values.elementAt(4).image,
                         name: Database.CoffeeItems.values.elementAt(4).name,
@@ -262,7 +261,6 @@ class _HomePageState extends State<HomePage> {
                             .elementAt(4)
                             .description,
                       ),
-                      
                     ],
                   ),
                 )
@@ -275,39 +273,41 @@ class _HomePageState extends State<HomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Container(
         height: 60,
-        width:310,
+        width: 310,
         decoration: BoxDecoration(
-          color: Colors.black26.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(20),
-          boxShadow: [BoxShadow(
-            color: Colors.black26,
-            spreadRadius: 3.0,
-            blurRadius: 3.0,
-          )]
+            color: Colors.black26.withOpacity(0.5),
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black26,
+                spreadRadius: 3.0,
+                blurRadius: 3.0,
+              )
+            ]),
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Icon(Icons.home_outlined, color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Icon(Icons.person_2_outlined, color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Icon(Icons.account_balance_wallet_outlined, color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Icon(Icons.shopping_bag_outlined, color: Colors.white),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 30),
+              child: Icon(Icons.question_answer_outlined, color: Colors.white),
+            ),
+          ],
         ),
-        child: Row(children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Icon(Icons.home_outlined,color: Colors.white,),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Icon(Icons.person_2_outlined,color: Colors.white,),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Icon(Icons.account_balance_wallet_outlined,color: Colors.white,),
-          ),
-
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Icon(Icons.shopping_bag_outlined,color: Colors.white,),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
-            child: Icon(Icons.question_answer_outlined,color: Colors.white,),
-          ),
-        ],),
       ),
     );
   }

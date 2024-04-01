@@ -162,7 +162,10 @@ class _SignUpPageState extends State<SignUpPage> {
                         )),
                       ),
                     ),
-                   
+                   Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Text('Privacy Policy',style: TextStyle(color: Colors.white),),
+                    )
 
                    
                   ],
